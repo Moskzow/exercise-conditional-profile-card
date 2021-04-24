@@ -29,8 +29,10 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
  
-  let document.querySelector("#name").innerHTML = function typeText(val) {
+  function typeText(val) + document.querySelector("#name").innerHTML {
       (val);
+
+  document.querySelector("#name").innerHTML = 
 }
 
   // reset the website body with the new html output
