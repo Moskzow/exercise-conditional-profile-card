@@ -1,5 +1,4 @@
 import "../style/index.scss";
-
 /**
  *  EDIT ONLY INSIDE THIS RENDER FUNCTION
  *  This function is called every time the user changes types or changes any input
@@ -11,10 +10,9 @@ import "../style/index.scss";
         socialMediaPosition: "left", // social media bar position (left or right)
         
         twitter: null, // social media usernames
-        github: "alesanchezr",
+        github: "moskzow",
         linkedin: null,
         instagram: null,
-
         name: null,
         lastname: null,
         role: null,
@@ -28,31 +26,49 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
- 
-  function typeText(val) + document.querySelector("#name").innerHTML {
-      (val);
-
-  document.querySelector("#name").innerHTML = 
-}
-
   // reset the website body with the new html output
+
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
-          <img src="${variables.avatarURL}" class="photo" />`
+            
+          <img src="${variables.avatarURL}" class="photo" />
           
-        //   <h1 >Lucy Boilett</h1>
-        //   <h2>Web Developer</h2>
-        //   <h3>Miami, USA</h3>
-        //   <ul class="position-right">
-        //     <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
-        //     <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
-        //     <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
-        //     <li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>
-        //   </ul>
-        // </div>
-    ;
+          <h1>${variables.name === null ? "Name" : variables.name}
+          ${variables.lastname === null ? "Last name" : variables.lastname}</h1>
+          <h2>${variables.role === null ? "Role" : variables.role}</h2>
+          <h3>${variables.city === null ? "City" : variables.city}
+          ${variables.country === null ? "Country" : variables.country}</h3>
+          <ul class="position-left">
+            <li><a href=${
+              variables.twitter
+            }><i class="fa fa-twitter"></i></a></li>
+            <li><a href=${
+              variables.github
+            }><i class="fa fa-github"></i></a></li>
+            <li><a href=${
+              variables.linkedin
+            }><i class="fa fa-linkedin"></i></a></li>
+            <li><a href=${
+              variables.instagram
+            }><i class="fa fa-instagram"></i></a></li>
+          </ul>
+          <ul class="position-right">
+            <li><a href=${
+              variables.twitter
+            }><i class="fa fa-twitter"></i></a></li>
+            <li><a href=${
+              variables.github
+            }><i class="fa fa-github"></i></a></li>
+            <li><a href=${
+              variables.linkedin
+            }><i class="fa fa-linkedin"></i></a></li>
+            <li><a href=${
+              variables.instagram
+            }><i class="fa fa-instagram"></i></a></li>
+          </ul>
+        </div>
+    `;
 }
-
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
@@ -78,7 +94,6 @@ window.onload = function() {
     city: null
   };
   render(window.variables); //render the card for the first time
-
   document.querySelectorAll(".picker").forEach(function(elm) {
     elm.addEventListener("change", function(e) {
       // <- add a listener to every input
@@ -86,7 +101,7 @@ window.onload = function() {
       let values = {};
       values[attribute] =
         this.value == "" || this.value == "null"
-          ? null
+          ? ""
           : this.value == "true"
           ? true
           : this.value == "false"
