@@ -37,18 +37,19 @@ function render(variables = {}) {
           <h2>${variables.role === null ? "Role" : variables.role}</h2>
           <h3>${variables.city === null ? "City" : variables.city}
           ${variables.country === null ? "Country" : variables.country}</h3>
-          <ul class=${variables.socialMediaPosition === true
-      ? "position-left"
-      : "position-right"
-    }>
-            <li><a href=${variables.twitter
-    }><i class="fa fa-twitter"></i></a></li>
-            <li><a href=${variables.github
-    }><i class="fa fa-github"></i></a></li>
-            <li><a href=${variables.linkedin
-    }><i class="fa fa-linkedin"></i></a></li>
-            <li><a href=${variables.instagram
-    }><i class="fa fa-instagram"></i></a></li>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href=${
+              variables.twitter
+            }><i class="fa fa-twitter"></i></a></li>
+            <li><a href=${
+              variables.github
+            }><i class="fa fa-github"></i></a></li>
+            <li><a href=${
+              variables.linkedin
+            }><i class="fa fa-linkedin"></i></a></li>
+            <li><a href=${
+              variables.instagram
+            }><i class="fa fa-instagram"></i></a></li>
           </ul>
  
         </div>
@@ -57,19 +58,19 @@ function render(variables = {}) {
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
-window.onload = function () {
+window.onload = function() {
   window.variables = {
     // if includeCover is true the algorithm should
     includeCover: true,
     // this is the url of the image that will used as background for the profile cover
     background: "http://placeimg.com/640/480/nature",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL: "https://randomuser.me/api/portraits/men/42.jpg",
     // social media bar position (left or right)
-    socialMediaPosition: true,
+    socialMediaPosition: "position-left",
     // social media usernames
     twitter: null,
-    github: "alesanchezr",
+    github: "moskzow",
     linkedin: null,
     instagram: null,
     name: null,
@@ -79,8 +80,8 @@ window.onload = function () {
     city: null
   };
   render(window.variables); //render the card for the first time
-  document.querySelectorAll(".picker").forEach(function (elm) {
-    elm.addEventListener("change", function (e) {
+  document.querySelectorAll(".picker").forEach(function(elm) {
+    elm.addEventListener("change", function(e) {
       // <- add a listener to every input
       const attribute = e.target.getAttribute("for"); // when any input changes, collect the value
       let values = {};
@@ -88,10 +89,10 @@ window.onload = function () {
         this.value == "" || this.value == "null"
           ? ""
           : this.value == "true"
-            ? true
-            : this.value == "false"
-              ? false
-              : this.value;
+          ? true
+          : this.value == "false"
+          ? false
+          : this.value;
       render(Object.assign(window.variables, values)); // render again the card with new valus
     });
   });
